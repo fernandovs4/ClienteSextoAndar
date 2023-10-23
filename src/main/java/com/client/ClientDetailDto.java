@@ -1,4 +1,4 @@
-package com.client.demo.client;
+package com.client;
 
 import java.util.List;
 

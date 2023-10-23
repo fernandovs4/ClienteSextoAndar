@@ -1,4 +1,4 @@
-package com.client.demo.client;
+package com.client;
 
 import org.springframework.data.annotation.Id;
 
