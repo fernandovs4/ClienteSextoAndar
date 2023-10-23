@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "0630d040-dc9f-49fc-a1b8-dd488306ea8b",
+		"name": "ClientesSextoAndar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26181936",
+		"_collection_link": "https://solar-space-37762.postman.co/workspace/9859b78b-bc96-4e15-b167-f1a40f83704f/collection/26181936-0630d040-dc9f-49fc-a1b8-dd488306ea8b?action=share&source=collection_link&creator=26181936"
+	},
+	"item": [
+		{
+			"name": "cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cliente",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\" : \"cliente1\",\n    \"cpf\" : \"12345678910\",\n    \"endereço\" : \"Rua exemplo1\",\n    \"data de nascimento\" : \"31/12/2000\",\n    \"renda\" : 5000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cliente",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cliente/cpf",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cliente/12345678910",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						"12345678910"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cliente/cpf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cliente/12345678910",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						"12345678910"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
