@@ -1,10 +1,11 @@
-package com.client.dto;
+package com.client.cliente.dto;
 
-import com.client.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+
+import com.client.cliente.User;
 
 @Getter
 @Setter

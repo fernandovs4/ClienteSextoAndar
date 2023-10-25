@@ -1,4 +1,4 @@
-package com.client;
+package com.client.cliente;
 
 import lombok.Getter;
 import lombok.Setter;
