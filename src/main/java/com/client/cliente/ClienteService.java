@@ -17,7 +17,7 @@ public class ClienteService {
     }
 
     public List<Cliente> listarClientes() {
-        return clienteRepository.findAll();
+        return clienteRepository.findByAtivo(true);
     }
 
     public ResponseEntity<String> excluirCliente(String cpf) {
@@ -32,7 +32,7 @@ public class ClienteService {
     }
 
     public ResponseEntity<Cliente> detalhesCliente(String cpf) {
-        Cliente cliente = clienteRepository.findByCpf(cpf);
+        Cliente cliente = clienteRepository.findByCpfAndAtivo(cpf, true);
         if (cliente != null) {
             return ResponseEntity.ok(cliente);
         } else {
