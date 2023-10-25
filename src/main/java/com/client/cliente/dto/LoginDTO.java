@@ -1,4 +1,4 @@
-package com.client.dto;
+package com.client.cliente.dto;
 
 import lombok.Getter;
 import lombok.Setter;

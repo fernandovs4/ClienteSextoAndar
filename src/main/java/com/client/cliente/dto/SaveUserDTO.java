@@ -1,4 +1,4 @@
-package com.client.dto;
+package com.client.cliente.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,9 +7,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class TokenDTO {
-
+public class SaveUserDTO {
     private String email;
-    private String token;
+    private String password;
     private List<String> roles;
 }
