@@ -13,6 +13,10 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     public Cliente criarCliente(Cliente cliente) {
+        Cliente cliente_db = clienteRepository.findByCpf(cliente.getCpf());
+        if (cliente_db != null) {
+            return null;  // criar exception de Já existe um user com o cpf cadastrado e retornar aqui
+        }
         return clienteRepository.save(cliente);
     }
 
@@ -21,13 +25,13 @@ public class ClienteService {
     }
 
     public ResponseEntity<String> excluirCliente(String cpf) {
-        Cliente cliente = clienteRepository.findByCpf(cpf);
+        Cliente cliente = clienteRepository.findByCpfAndAtivo(cpf, true);
         if (cliente != null) {
             cliente.setAtivo(false);
             clienteRepository.save(cliente);
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build();
+            return null; // criar exception de Cliente não encontrado e retornar aqui
         }
     }
 
