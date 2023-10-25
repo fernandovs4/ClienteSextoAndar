@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class SaveClienteDTO {
+public class SaveUserDTO {
     private String email;
     private String password;
     private List<String> roles;
