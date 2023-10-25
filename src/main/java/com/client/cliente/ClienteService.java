@@ -22,7 +22,7 @@ public class ClienteService {
     }
 
     public List<Cliente> listarClientes() {
-        return clienteRepository.findAll();
+        return clienteRepository.findByAtivo(true);
     }
 
     public ResponseEntity<String> excluirCliente(String cpf) {
