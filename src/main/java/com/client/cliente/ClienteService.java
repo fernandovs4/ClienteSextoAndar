@@ -2,6 +2,7 @@ package com.client.cliente;
 
 import java.util.List;
 
+import com.client.cliente.exception.ClienteNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class ClienteService {
             clienteRepository.save(cliente);
             return ResponseEntity.noContent().build();
         } else {
-            return null; // criar exception de Cliente não encontrado e retornar aqui
+            throw new ClienteNotFoundException(cpf); // criar exception de Cliente não encontrado e retornar aqui
         }
     }
 
