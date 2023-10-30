@@ -2,6 +2,7 @@ package com.client.cliente;
 
 import java.util.List;
 
+import com.client.cliente.exception.CpfAlreadyRegisteredException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

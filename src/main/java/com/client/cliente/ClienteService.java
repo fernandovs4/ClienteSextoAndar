@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import  com.client.cliente.exception.CpfAlreadyRegisteredException;
 
 @Service
 public class ClienteService {
@@ -12,10 +13,10 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente criarCliente(Cliente cliente) {
+    public Cliente criarCliente(Cliente cliente){
         Cliente cliente_db = clienteRepository.findByCpf(cliente.getCpf());
         if (cliente_db != null) {
-            return null;  // criar exception de Já existe um user com o cpf cadastrado e retornar aqui
+            throw new CpfAlreadyRegisteredException(cliente.getCpf());
         }
         return clienteRepository.save(cliente);
     }
