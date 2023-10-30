@@ -44,4 +44,15 @@ public class ClienteService {
         }
     }
 
+    public boolean validaCpf(String cpf) {
+        Cliente cliente = clienteRepository.findByCpfAndAtivo(cpf, true);
+        if (cliente != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
+
 }

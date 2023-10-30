@@ -32,4 +32,9 @@ public class ClienteController {
     public ResponseEntity<Cliente> detalhesCliente(@PathVariable String cpf) {
         return clienteService.detalhesCliente(cpf);
     }
+
+    @GetMapping("/exists/{cpf}")
+    public boolean validaCpf(@PathVariable String cpf) {
+        return clienteService.validaCpf(cpf);
+    }
 }
