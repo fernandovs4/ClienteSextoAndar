@@ -1,5 +1,6 @@
 package com.client.cliente;
 
+import com.client.cliente.exception.ClienteNotFoundException;
 import com.client.cliente.exception.CpfAlreadyRegisteredException;
 import com.client.common.ErrorDTO;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,16 @@ public class ClienteControllerAdvice {
         return error;
     }
 
-
+    @ExceptionHandler(ClienteNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDTO clienteNotFoundException(ClienteNotFoundException ex){
+        ErrorDTO error = new ErrorDTO();
+        error.setMessage(ex.getMessage());
+        error.setCode(404);
+        error.setTime(LocalDateTime.now());
+        return error;
+    }
 }
 
 
