@@ -50,12 +50,12 @@ public class ClienteService {
     }
 
     // verifies the token, use this on every route
-    public ReturnUserDTO verifyUser(String token) {
+    public int verifyUser(String token) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<ReturnUserDTO> response = restTemplate.getForEntity("http://54.71.150.144:8082/login/" + token, ReturnUserDTO.class);
         if (response.getStatusCode().is2xxSuccessful()) {
-            return response.getBody();
+            return 1;
         }
-        return null;
+        return 0;
     }
 }
