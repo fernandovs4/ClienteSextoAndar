@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.client.cliente.dto.userDTO;
+
 import java.io.IOException;
 
 @Component
@@ -24,7 +26,7 @@ public class TokenFilter implements Filter {
         String token = req.getHeader("token");
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Integer> responsey = restTemplate.getForEntity("http://54.71.150.144:8082/token/" + token, Integer.class);
+        ResponseEntity<userDTO> responsey = restTemplate.getForEntity("http://54.71.150.144:8082/token/" + token, userDTO.class);
         if (responsey.getStatusCode().is2xxSuccessful()) {
             chain.doFilter(request, response);
         } else {
