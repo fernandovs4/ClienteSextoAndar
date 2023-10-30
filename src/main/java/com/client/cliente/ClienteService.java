@@ -1,15 +1,11 @@
 package com.client.cliente;
 
-import com.client.cliente.dto.ReturnUserDTO;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-
-
+import com.client.cliente.ClienteRepository;
 
 @Service
 public class ClienteService {
@@ -49,13 +45,4 @@ public class ClienteService {
         }
     }
 
-    // verifies the token, use this on every route
-    public int verifyUser(String token) {
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<ReturnUserDTO> response = restTemplate.getForEntity("http://54.71.150.144:8082/login/" + token, ReturnUserDTO.class);
-        if (response.getStatusCode().is2xxSuccessful()) {
-            return 1;
-        }
-        return 0;
-    }
 }

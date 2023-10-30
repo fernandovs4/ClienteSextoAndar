@@ -15,33 +15,21 @@ public class ClienteController {
 
     @PostMapping
     public Cliente criarCliente(@RequestBody Cliente cliente) {
-        if (verifyUser(token)){
-            return clienteService.criarCliente(cliente);
-        }
-        return null;
+        return clienteService.criarCliente(cliente);
     }
 
     @GetMapping
     public List<Cliente> listarClientes() {
-        if (verifyUser(token)){
-            return clienteService.listarClientes();
-        }  
-        return null;
+        return clienteService.listarClientes();
     }
 
     @DeleteMapping("/{cpf}")
     public ResponseEntity<String> excluirCliente(@PathVariable String cpf) {
-        if (verifyUser(token)){
-            return clienteService.excluirCliente(cpf);
-        }  
-        return null;
+        return clienteService.excluirCliente(cpf);
     }
 
     @GetMapping("/{cpf}")
     public ResponseEntity<Cliente> detalhesCliente(@PathVariable String cpf) {
-        if (verifyUser(token)){
-            return clienteService.detalhesCliente(cpf);
-        }  
-        return null;
+        return clienteService.detalhesCliente(cpf);
     }
 }
