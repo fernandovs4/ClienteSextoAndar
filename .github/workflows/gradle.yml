@@ -50,3 +50,17 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: liviatanaka/cliente-sexto-andar:${{ github.sha }}
+
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_TEST }}
+        username: "ec2-user"
+        key: ${{ secrets.KEY_TEST }}
+        port: 22
+        script: |
+          docker stop cliente-sexto-andar
+          docker rm --force cliente-sexto-andar
+          docker run -e MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} -d -p 8080:8080 --name cliente-sexto-andar liviatanaka/cliente-sexto-andar:${{ github.sha }}
+
+
