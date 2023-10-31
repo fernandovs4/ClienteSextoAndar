@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.client.cliente.dto.clienteDetalhesDto;
+
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
@@ -29,7 +31,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{cpf}")
-    public ResponseEntity<Cliente> detalhesCliente(@PathVariable String cpf) {
+    public ResponseEntity<clienteDetalhesDto> detalhesCliente(@PathVariable String cpf) {
         return clienteService.detalhesCliente(cpf);
     }
 
