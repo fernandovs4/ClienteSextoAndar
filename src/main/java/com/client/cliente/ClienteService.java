@@ -3,6 +3,9 @@ package com.client.cliente;
 import java.util.Arrays;
 import java.util.List;
 
+import com.client.cliente.exception.ClienteNotFoundException;
+import com.client.cliente.exception.CpfAlreadyRegisteredException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,10 +20,10 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente criarCliente(Cliente cliente) {
+    public Cliente criarCliente(Cliente cliente){
         Cliente cliente_db = clienteRepository.findByCpf(cliente.getCpf());
         if (cliente_db != null) {
-            return null;  // criar exception de Já existe um user com o cpf cadastrado e retornar aqui
+            throw new CpfAlreadyRegisteredException(cliente.getCpf());
         }
         return clienteRepository.save(cliente);
     }
@@ -36,7 +39,7 @@ public class ClienteService {
             clienteRepository.save(cliente);
             return ResponseEntity.noContent().build();
         } else {
-            return null; // criar exception de Cliente não encontrado e retornar aqui
+            throw new ClienteNotFoundException(cpf); // criar exception de Cliente não encontrado e retornar aqui
         }
     }
 
