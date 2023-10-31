@@ -49,17 +49,17 @@ public class ClienteService {
             return ResponseEntity.notFound().build();
         }
         
-        RestTemplate restTemplate = new RestTemplate();
+        // RestTemplate restTemplate = new RestTemplate();
 
-        // Chamando a rota de aluguel
-        ResponseEntity<AluguelDto[]> responseAluguel = restTemplate.getForEntity(
-            "http://18.236.255.187/aluguel?cpfCliente=" + cpf, AluguelDto[].class);
-        AluguelDto[] alugueis = responseAluguel.getBody();
+        // // Chamando a rota de aluguel
+        // ResponseEntity<AluguelDto[]> responseAluguel = restTemplate.getForEntity(
+        //     "http://18.236.255.187/aluguel?cpfCliente=" + cpf, AluguelDto[].class);
+        // AluguelDto[] alugueis = responseAluguel.getBody();
         
-        // Chamando a rota de vendas
-        ResponseEntity<vendaDto[]> responseVenda = restTemplate.getForEntity(
-            "http://------SERVIDORRRRR AQUIII-------viu livia?-/vendas/cliente/" + cpf, vendaDto[].class);
-        vendaDto[] vendas = responseVenda.getBody();
+        // // Chamando a rota de vendas
+        // ResponseEntity<vendaDto[]> responseVenda = restTemplate.getForEntity(
+        //     "http://------SERVIDORRRRR AQUIII-------viu livia?-/vendas/cliente/" + cpf, vendaDto[].class);
+        // vendaDto[] vendas = responseVenda.getBody();
 
         clienteDetalhesDto clienteDetalhes = new clienteDetalhesDto();
         clienteDetalhes.setNome(cliente.getNome());
@@ -67,8 +67,8 @@ public class ClienteService {
         clienteDetalhes.setEndereco(cliente.getEndereco());
         clienteDetalhes.setDataNascimento(cliente.getDataNascimento());
         clienteDetalhes.setRenda(cliente.getRenda());
-        clienteDetalhes.setAlugueis(Arrays.asList(alugueis));
-        clienteDetalhes.setVendas(Arrays.asList(vendas));
+        // clienteDetalhes.setAlugueis(Arrays.asList(alugueis));
+        // clienteDetalhes.setVendas(Arrays.asList(vendas));
         
         return ResponseEntity.ok(clienteDetalhes);
     }
