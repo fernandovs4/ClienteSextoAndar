@@ -2,8 +2,6 @@ package com.client.cliente.dto;
 
 import java.util.List;
 
-import com.client.cliente.AluguelDto;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -21,11 +19,11 @@ public class clienteDetalhesDto {
     @JsonProperty("renda")
     private double renda;
     @JsonProperty("alugueis")
-    private List<AluguelDto> alugueis;
+    private List<aluguelDto> alugueis;
     @JsonProperty("vendas")
     private List<vendaDto> vendas;
 
-    public clienteDetalhesDto(String nome, String cpf, String endereco, String dataNascimento, double renda, List<AluguelDto> alugueis, List<vendaDto> vendas) {
+    public clienteDetalhesDto(String nome, String cpf, String endereco, String dataNascimento, double renda, List<aluguelDto> alugueis, List<vendaDto> vendas) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -58,7 +56,7 @@ public class clienteDetalhesDto {
         return this.renda;
     }
 
-    public List<AluguelDto> getAlugueis() {
+    public List<aluguelDto> getAlugueis() {
         return this.alugueis;
     }
 
@@ -86,7 +84,7 @@ public class clienteDetalhesDto {
         this.renda = renda;
     }
 
-    public void setAlugueis(List<AluguelDto> alugueis) {
+    public void setAlugueis(List<aluguelDto> alugueis) {
         this.alugueis = alugueis;
     }
 
