@@ -26,6 +26,11 @@ public class ClienteController {
         return clienteService.listarClientes();
     }
 
+    @GetMapping("/exists/{cpf}")
+    public Cliente validaCpf(@PathVariable String cpf) {
+        return clienteService.validaCpf(cpf);
+    }
+
     @DeleteMapping("/{cpf}")
     public ResponseEntity<String> excluirCliente(@PathVariable String cpf) {
         return clienteService.excluirCliente(cpf);
@@ -34,10 +39,5 @@ public class ClienteController {
     @GetMapping("/{cpf}")
     public ResponseEntity<clienteDetalhesDto> detalhesCliente(@PathVariable String cpf) {
         return clienteService.detalhesCliente(cpf);
-    }
-
-    @GetMapping("/exists/{cpf}")
-    public boolean validaCpf(@PathVariable String cpf) {
-        return clienteService.validaCpf(cpf);
     }
 }
