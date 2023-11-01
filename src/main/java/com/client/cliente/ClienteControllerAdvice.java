@@ -26,7 +26,7 @@ public class ClienteControllerAdvice {
 
     @ExceptionHandler(ClienteNotFoundException.class)
     @ResponseBody
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorDTO clienteNotFoundException(ClienteNotFoundException ex){
         ErrorDTO error = new ErrorDTO();
         error.setMessage(ex.getMessage());
@@ -34,6 +34,7 @@ public class ClienteControllerAdvice {
         error.setTime(LocalDateTime.now());
         return error;
     }
+
 }
 
 
