@@ -1,10 +1,11 @@
 # ClienteSextoAndar
+
 ## Descrição do Projeto
 <p align="justify">O projeto consiste em um sistema de cadastro de clientes, onde o usuário pode cadastrar, editar, excluir e visualizar os clientes cadastrados. O sistema foi desenvolvido utilizando a linguagem de programação Java, o framework Spring Boot e o banco de dados MongoDB.</p>
 
 ## Rotas e documentação
-
-<p align="justify">O projeto possui 4 rotas, sendo elas:</p>
+<p align="justify">O projeto pode ser acessado no endereço: http://34.210.87.17:8080.</p>
+<p align="justify">Ele possui 4 rotas, sendo elas:</p>
 
 - **GET** /clientes: Retorna todos os clientes cadastrados no banco de dados.
 
