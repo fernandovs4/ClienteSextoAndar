@@ -1,5 +1,6 @@
 package com.client.cliente;
 
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +10,9 @@ import com.client.cliente.exception.CpfAlreadyRegisteredException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -44,7 +48,7 @@ public class ClienteService {
         }
     }
 
-    public ResponseEntity<clienteDetalhesDto> detalhesCliente(String cpf) {
+    public ResponseEntity<clienteDetalhesDto> detalhesCliente(String cpf, String token) {
         Cliente cliente = clienteRepository.findByCpfAndAtivo(cpf, true);
         if (cliente == null) {
             return ResponseEntity.notFound().build();
@@ -52,15 +56,27 @@ public class ClienteService {
         
         RestTemplate restTemplate = new RestTemplate();
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("token", token);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
          // Chamando a rota de aluguel --> http://18.236.255.187:8080/aluguel?cpfLocatario=
-         ResponseEntity<aluguelDto[]> responseAluguel = restTemplate.getForEntity(
-             "http://localhost:8002/aluguel?cpfLocatario=" + cpf, aluguelDto[].class);
+         ResponseEntity<aluguelDto[]> responseAluguel = restTemplate.exchange(
+            "http://18.236.255.187:8080/aluguel?cpfLocatario=" + cpf,
+            HttpMethod.GET,
+            entity,
+            aluguelDto[].class);
+
         aluguelDto[] alugueis = responseAluguel.getBody();
         
-         // Chamando a rota de vendas --> 
-         ResponseEntity<vendaDto[]> responseVenda = restTemplate.getForEntity(
-             "http://localhost:8002/vendas/cliente/" + cpf, vendaDto[].class);
-         vendaDto[] vendas = responseVenda.getBody();
+        // Chamando a rota de vendas --> http://35.88.107.128:8080/vendas/cliente?clienteCpf=
+        ResponseEntity<vendaDto[]> responseVenda = restTemplate.exchange(
+                "http://35.88.107.128:8080/vendas/cliente?clienteCpf=" + cpf,
+                HttpMethod.GET,
+                entity,
+                vendaDto[].class);
+
+        vendaDto[] vendas = responseVenda.getBody();
 
         clienteDetalhesDto clienteDetalhes = new clienteDetalhesDto();
         clienteDetalhes.setNome(cliente.getNome());

@@ -13,8 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class vendaDto {
     @JsonProperty("imovelIdentifier")
     private String imovelIdentifier;
-    @JsonProperty("cpfCliente")
-    private String cpfCliente;
+
     @JsonProperty("cpfCorretor")
     private String cpfCorretor;
     @JsonProperty("vendaStatus")
@@ -23,9 +22,8 @@ public class vendaDto {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private String dataVenda;
 
-    public vendaDto(String imovelIdentifier, String cpfCliente, String cpfCorretor, String vendaStatus, String dataVenda) {
+    public vendaDto(String imovelIdentifier, String cpfCorretor, String vendaStatus, String dataVenda) {
         this.imovelIdentifier = imovelIdentifier;
-        this.cpfCliente = cpfCliente;
         this.cpfCorretor = cpfCorretor;
         this.vendaStatus = vendaStatus;
         this.dataVenda = dataVenda;
@@ -38,9 +36,6 @@ public class vendaDto {
         return this.imovelIdentifier;
     }
 
-    public String getCpfCliente() {
-        return this.cpfCliente;
-    }
 
     public String getCpfCorretor() {
         return this.cpfCorretor;

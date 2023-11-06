@@ -22,19 +22,18 @@ public class aluguelDto {
     private String status;
     @JsonProperty("cpfCorretor")
     private String cpfCorretor;
-    @JsonProperty("cpfLocatario")
-    private String cpfLocatario;
+
     @JsonProperty("idImovel")
     private String idImovel;
     @JsonProperty("dataAluguel")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private String dataAluguel;
 
-    public aluguelDto(String identifier, String status, String cpfCorretor, String cpfLocatario, String idImovel, String dataAluguel) {
+    public aluguelDto(String identifier, String status, String cpfCorretor,  String idImovel, String dataAluguel) {
         this.identifier = identifier;
         this.status = status;
         this.cpfCorretor = cpfCorretor;
-        this.cpfLocatario = cpfLocatario;
+
         this.idImovel = idImovel;
         this.dataAluguel = dataAluguel;
     }
@@ -54,9 +53,6 @@ public class aluguelDto {
         return this.cpfCorretor;
     }
 
-    public String getCpfLocatario() {
-        return this.cpfLocatario;
-    }
 
     public String getIdImovel() {
         return this.idImovel;

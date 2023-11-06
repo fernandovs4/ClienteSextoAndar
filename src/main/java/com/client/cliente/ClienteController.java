@@ -37,7 +37,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{cpf}")
-    public ResponseEntity<clienteDetalhesDto> detalhesCliente(@PathVariable String cpf) {
-        return clienteService.detalhesCliente(cpf);
+    public ResponseEntity<clienteDetalhesDto> detalhesCliente(@PathVariable String cpf, @RequestHeader("token") String token) {
+        return clienteService.detalhesCliente(cpf, token);
     }
 }
